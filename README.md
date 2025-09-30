@@ -1,6 +1,7 @@
-# CLARE: Deterministic Cycle-Level Accelerator on Reconfigurable Platforms in DNN-Enabled Real-Time Safety-Critical Systems
+# DERCA: Deterministic Cycle-Level Accelerator on Reconfigurable Platforms in DNN-Enabled Real-Time Safety-Critical Systems
 
-# RTSS 2025 CLARE Submission Artifact Evaluation Guide
+# RTSS 2025 DERCA Submission Artifact Evaluation Guide
+**Note**: we decided to change the acronym from "CLARE" to "DERCA" due to some trademark concerns, we will update the new versions but some acronym in older codes or versions may remain unchanged
 
 ## Overview:
 - A **docker image** is used for the artifacts, the URL to the docker image: https://hub.docker.com/r/jishixin/clare-sim/tags
