@@ -297,7 +297,7 @@ class Searcher:
         rows = []
         for util, df in result.items():
             if 'sim_success' in df.index:
-                rows.append(pd.Series(df.loc['sim_success'], name=util))
+                rows.append(pd.Series(df.loc[metric], name=util))
             else:
                 # If sim_success row not present, you can skip or fill with NaN
                 rows.append(pd.Series([pd.NA]*df.shape[1], index=df.columns, name=util))
