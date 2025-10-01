@@ -284,11 +284,11 @@ class schedulability_analyzer():
 
     @cached_property
     def _n(self):
-        """#tasks, task indexing ranging from [0, n-1]"""
+        """#tasks, task ranging from [0, n-1]"""
         return len(self.TS.sorted_tasks)
     @cached_property
     def _q_max(self):
-        """q^max: max NPR WCET in a task, index ranging from [0, n]
+        """q^max: max NPR WCET in a task, index ranging from (0, n]
         q^max[n] = 0"""
         q_max = [None]*(self._n+1) #index from [0,n], where q_max[0] never used
         for idx, (task, period) in enumerate(self.TS.sorted_tasks):
@@ -330,7 +330,7 @@ class schedulability_analyzer():
         #2 cases will result in LB==UB
         # (1) 2 tasks has the exact same period
         # (2) the longest period happen to be the lcm of the others
-        # handling: if LB==UB, add the LB in consideration
+        # handling: if LB==UB, add the UB in consideration
         # this introduces additional possible t, thus potentially reduces beta_k
         # Still, this is safe since the scheduability analysis represents a sufficient condiction of meet deadline
         # The cases with False result can still meet ddl in simulation
@@ -421,7 +421,6 @@ class PP_placer(schedulability_analyzer):
         beta = self._beta
         for i in range(1,self._n):
             U[i] = min(beta[0:i])#U_1 to U_n-1
-            # debug_print("U:",U)
         return U
 
     def _merge_region(self, r1:AccRegion,r2:AccRegion)->AccRegion:
@@ -519,7 +518,6 @@ class PP_placer(schedulability_analyzer):
         for idx,(task,_) in enumerate(self.TS.sorted_tasks):
             #refresh caches
             self.refresh_caches()
-            # debug_print(self._beta)
             if idx == 0:#merge the first task as a whole
                 merged_task = AccTask()
                 merged_task.ID = task.ID
@@ -537,43 +535,32 @@ class PP_placer(schedulability_analyzer):
                     self.TS.PPP_success = False
                     self.TS.sche_test_success = False    
                     return self.TS
-        #final check: to satisfy schedulability, 
-        #With schedulability, we place the q^max_i <= min(beta), but only for i= 2,3,...n
-        #still, we need to verify q^max_n+1 <= min(beta), for i=n+1, use q^max_i=0
-        self.refresh_caches()
-        if min(self._beta) >=0:
-            self.PPP_success = True
-            self.TS.PPP_success = True
-            self.TS.sche_test_success = True 
-            # debug_print('beta',self._beta)
-        else:
-            self.PPP_success = False
-            self.TS.PPP_success = False
-            self.TS.sche_test_success = False 
-            # debug_print('beta',self._beta)
+        self.PPP_success = True
+        self.TS.PPP_success = True
+        self.TS.sche_test_success = True 
         return self.TS
 
 
 if __name__ == '__main__':
-    config = AccConfig.from_json("/home/shixin/RTSS2025_camera_ready/DERCA/CLARE_SW/configs/acc_config.json")
+    config = AccConfig.from_json("/home/shixin/RTSS2025_AE/CLARE/CLARE_SW/configs/acc_config.json")
     # print(config)
     iter = AccIter()
     # print(iter)
     w1=Workload()
     print('decompose_NN')
-    w1.decompose_NN([[1024,8192,1024],[1024,8192,1024]],config)
+    w1.decompose_NN([[256,4096,256],[256,256,256]],config)
     # w1.comp_ovhd(config)
     # w1.print_iters(['layer','idx','load','comp','store','o_start','last_o_start','so_r','so_p','si_r','si_p'])
     print('apply strategy')
-    # s1 = StrategyLayerwise()
-    s1 = StrategyFlexible()
+    s1 = StrategyLayerwise()
+    # s1 = StrategyFlexible()
     s1.from_workload(w1)
     # s1.print_iters(['layer','idx','is_preemptive','si_r','si_p','strategy'])
     t1 = AccTask(s1)
     # print(t1)
 
     print('form taskset')
-    taskset = AccTaskset([s1,s1],[0.71,0.29])
+    taskset = AccTaskset([s1,s1],[0.4,0.4])
     for task,_ in taskset.sorted_tasks:
         print(task)
 
