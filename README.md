@@ -24,7 +24,20 @@ Faculty Collaborators: Prof. Alex Jones (Syracuse University), Prof. Zheng Dong(
 
 
 # Quick Start guide
+DERCA provides a commandline tool script to reproduce the figures shown in the manuscript:
+```sh
+#install required packages, virtual env or conda recommended
+pip install -r requirements.txt 
+#reproduce figures
+#/DERCA# 
+python reproduce_fig.py --target fig11a
+python reproduce_fig.py --target fig11b
+python reproduce_fig.py --target fig11c
+python reproduce_fig.py --target fig13
+```
 
+
+# Introduction:
 ## DERCA Software stack
 DERCA software stack takes (1) a task set and (2) the platform constraints as input, and generates the execution procedure of the taskset for execution.
 
@@ -47,4 +60,15 @@ For more detailed reproduce guide, please refer to the [artifact evaluation guid
 For more detailed explanation about the codes and workflow used in the software stack, please refer to the [DERCA software readme file](DERCA_SW/Readme.md)
 
 ## DERCA Hardware stack (under construction)
-We demonstrate the architecture of DERCA via a series of examples for 
+DERCA use [CHARM](https://github.com/arc-research-lab/CHARM) as the baseline accelerator, and we hand-tune the codes for our proposed imporvements.
+The environment configuration of DERCA is the same as CHARM:
+- Vitis: 2021.1
+- Petalinux: xilinx-versal-common-v2021.1
+- hardware platform: xilinx_vck190_base_202110_1.xpfm
+
+Several artifacts representing each component and the whole system are/will be provided:
+- [example 1](DERCA_HW/example1_recompute_dataflow/): implementation of recompute dataflow, controlled by CPU commands
+- [example 2](DERCA_HW/example2_persist_dataflow/): implementation of persist dataflow, controlled by CPU commands
+- example 3 (under construction): implementation of flexible dataflow, controlled by CPU commands
+- example 4 (under construction): scheduler & kernel management module design with dummy accelerator and task release module
+- example 5 (under construction): Final flexible accelerator design
