@@ -1,5 +1,5 @@
 """
-This script warps the whole CLARE_SW logic, and generate the figures CLARE manuscript RTSS submission
+This script warps the whole DERCA_SW logic, and generate the figures DERCA manuscript RTSS submission
 (1) performance concerns:
     - due to the large amount of design points, conduct full simulations will be very time-consuming
     - e.g. to reproduce fig 11.a(w/t 16800 points in total) will take XX hours on a 64-core server
@@ -18,7 +18,7 @@ This script warps the whole CLARE_SW logic, and generate the figures CLARE manus
 
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), 'CLARE_SW'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'DERCA_SW'))
 import argparse
 from datetime import datetime
 import math
@@ -27,12 +27,12 @@ from typing import List
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
 
-from CLARE_SW.parse_workload import AccConfig, Workload
-from CLARE_SW.apply_strategy import *
-from CLARE_SW.schedulability_analysis import AccTaskset, PP_placer, AccTask, AccRegion
-from CLARE_SW.sim_util import ScheConfig
-from CLARE_SW.search import Searcher, comp_WCET
-from CLARE_SW.utils import gen_bert_mi,gen_bert_t,gen_deit_t,gen_mlp_mixer,gen_pointnet,uunifast
+from DERCA_SW.parse_workload import AccConfig, Workload
+from DERCA_SW.apply_strategy import *
+from DERCA_SW.schedulability_analysis import AccTaskset, PP_placer, AccTask, AccRegion
+from DERCA_SW.sim_util import ScheConfig
+from DERCA_SW.search import Searcher, comp_WCET
+from DERCA_SW.utils import gen_bert_mi,gen_bert_t,gen_deit_t,gen_mlp_mixer,gen_pointnet,uunifast
 
 
 
@@ -43,8 +43,8 @@ num_util_small = 40
 
 def reproduce_fig11a(size, workspace='./temp/fig11a'):
     assert size in ['small','large']
-    acc_config_path = './CLARE_SW/configs/acc_config.json'
-    sche_config_path = './CLARE_SW/configs/sche_config.json'
+    acc_config_path = './DERCA_SW/configs/acc_config.json'
+    sche_config_path = './DERCA_SW/configs/sche_config.json'
     full_workspace=workspace+'_'+size
     if size == 'small':
         u_list = util_list_small
@@ -72,8 +72,8 @@ def reproduce_fig11a(size, workspace='./temp/fig11a'):
 
 def reproduce_fig11b(size, workspace='./temp/fig11b'):
     assert size in ['small','large']
-    acc_config_path = './CLARE_SW/configs/acc_config.json'
-    sche_config_path = './CLARE_SW/configs/sche_config.json'
+    acc_config_path = './DERCA_SW/configs/acc_config.json'
+    sche_config_path = './DERCA_SW/configs/sche_config.json'
     full_workspace=workspace+'_'+size
     if size == 'small':
         u_list = util_list_small
@@ -102,8 +102,8 @@ def reproduce_fig11b(size, workspace='./temp/fig11b'):
 def reproduce_fig11c(size, workspace='./temp/fig11c'):
     """add different apps sequentially"""
     assert size in ['small','large']
-    acc_config_path = './CLARE_SW/configs/acc_config.json'
-    sche_config_path = './CLARE_SW/configs/sche_config.json'
+    acc_config_path = './DERCA_SW/configs/acc_config.json'
+    sche_config_path = './DERCA_SW/configs/sche_config.json'
     if not os.path.exists(f"./temp/fig11c_{size}"):
         os.makedirs(f"./temp/fig11c_{size}")
     full_workspace=workspace+'_'+size
@@ -239,7 +239,7 @@ def reproduce_fig13(size, workspace='./temp/fig13'):
     if not os.path.exists(f"./temp/fig13_{size}"):
         os.makedirs(f"./temp/fig13_{size}")
     full_workspace = f"./temp/fig13_{size}"
-    acc_config_path = './CLARE_SW/configs/acc_config.json'
+    acc_config_path = './DERCA_SW/configs/acc_config.json'
     acc_config = AccConfig.from_json(acc_config_path)
     
     u_list = [0.7,0.75,0.8,0.85,0.9,0.95,1]
@@ -319,7 +319,7 @@ def worker(u, s, num_util, DNN, acc_config):
     print(f"finished: u={u}({utils}),s={s}, wcet={total}")
     return (u, s, total)   
     
-parser = argparse.ArgumentParser(description="cmd tool for reproduce CLARE RTSS2025 Submission figures")
+parser = argparse.ArgumentParser(description="cmd tool for reproduce DERCA RTSS2025 Submission figures")
 parser.add_argument(
     "--target",
     type=str,

@@ -458,7 +458,7 @@ class SimManager:
 
 
 if __name__ == '__main__':
-    config = AccConfig.from_json("/home/shixin/RTSS2025_AE/CLARE/CLARE_SW/configs/acc_config.json")
+    config = AccConfig.from_json("/home/shixin/RTSS2025_AE/DERCA/DERCA_SW/configs/acc_config.json")
     # w1=Workload()
     debug_print('decompose_NN')
     # w1.decompose_NN([[1024,8192,1024],[1024,8192,1024]],config)
@@ -493,7 +493,7 @@ if __name__ == '__main__':
     print(ts_sim)
 
 
-    sche_config = ScheConfig.from_json("/home/shixin/RTSS2025_AE/CLARE/CLARE_SW/configs/sche_config.json")
+    sche_config = ScheConfig.from_json("/home/shixin/RTSS2025_AE/DERCA/DERCA_SW/configs/sche_config.json")
 
     sim_manager = SimManager(
         sche_config=sche_config,

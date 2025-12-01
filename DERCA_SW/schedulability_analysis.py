@@ -12,7 +12,7 @@ This script intakes the workloads that is parsed and applied strategy, and
     - (2) the schedulability analysis results
 """
 """
-brief description for CLARE task modeling:
+brief description for DERCA task modeling:
 - A **task set**: several tasks
 - A **task**: releases infinite instances of this task periodically
     - attributes: period(p), worst-case execution time(WCET)(e), 
@@ -23,7 +23,7 @@ brief description for CLARE task modeling:
     - one layer has >=3 iterations in the Acc(load/comp/store)
     - one NPR has >=1 iterations
     - based on the strategies and taskset, a NPR can have less/euqal/more than a layer
-    - still, the basic unit of CLARE scheduling is an Acc iteration
+    - still, the basic unit of DERCA scheduling is an Acc iteration
 """
 from utils import print_iters
 from typing import List
@@ -276,7 +276,7 @@ class AccTaskset:
 class schedulability_analyzer():
     """
     a class contains the functions used in schedulability analysis
-    In CLARE, the task/regions are indexed beginning with 1, here they're convert to 0-indexed
+    In DERCA, the task/regions are indexed beginning with 1, here they're convert to 0-indexed
     """
     def __init__(self,taskset:AccTaskset):
         self.TS = deepcopy(taskset)
@@ -305,7 +305,7 @@ class schedulability_analyzer():
         """deadline, ranges from [0,n]
         to assist the analysis, define that d[n]=lcm(p[0],p[1],...p[n-1])
         where lcm stands for least common multiple
-        in CLARE we set d[i]=p[i], i.e. a job must be finished before its successor releases"""
+        in DERCA we set d[i]=p[i], i.e. a job must be finished before its successor releases"""
         d = deepcopy(self._p)
         d.append(lcm(self._p))
         return d  
@@ -555,7 +555,7 @@ class PP_placer(schedulability_analyzer):
 
 
 if __name__ == '__main__':
-    config = AccConfig.from_json("/home/shixin/RTSS2025_camera_ready/DERCA/CLARE_SW/configs/acc_config.json")
+    config = AccConfig.from_json("/home/shixin/RTSS2025_camera_ready/DERCA/DERCA_SW/configs/acc_config.json")
     # print(config)
     iter = AccIter()
     # print(iter)

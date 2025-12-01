@@ -359,16 +359,16 @@ def comp_WCET(DNN_shapes:List[List[List[int]]],utils:list,
  
 if __name__ == "__main__":
     workspace='/home/shixin/RTSS2025_AE/fig11av4'
-    acc_config = AccConfig.from_json('/home/shixin/RTSS2025_AE/CLARE/CLARE_SW/configs/acc_config.json')
-    sche_config = ScheConfig.from_json('/home/shixin/RTSS2025_AE/CLARE/CLARE_SW/configs/sche_config.json')
+    acc_config = AccConfig.from_json('/home/shixin/RTSS2025_AE/DERCA/DERCA_SW/configs/acc_config.json')
+    sche_config = ScheConfig.from_json('/home/shixin/RTSS2025_AE/DERCA/DERCA_SW/configs/sche_config.json')
     DNN = [
         [[1024,8192,1024],[1024,8192,1024]],
         [[1024,8192,1024],[1024,8192,1024]]
     ]
     start = datetime.now()
     util_list = [0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975,1]
-    searcher = Searcher('/home/shixin/RTSS2025_AE/CLARE/CLARE_SW/configs/acc_config_lightweight.json',
-                        '/home/shixin/RTSS2025_AE/CLARE/CLARE_SW/configs/sche_config.json',
+    searcher = Searcher('/home/shixin/RTSS2025_AE/DERCA/DERCA_SW/configs/acc_config_lightweight.json',
+                        '/home/shixin/RTSS2025_AE/DERCA/DERCA_SW/configs/sche_config.json',
                         DNN,
                         utils=util_list,
                         num_util=100,
