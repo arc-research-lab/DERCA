@@ -12,8 +12,8 @@ Ph.D. Students: Shixin Ji (Student Lead), Zhuoping Yang, Xingzhen Chen, Wei Zhan
 
 Faculty Collaborators: Prof. Alex Jones (Syracuse University), Prof. Zheng Dong(Wayne State University)
 
-# 🚀 Thank You for Using SCARIF!!
-**Your support and growing engagement inspire us to continually improve and enhance SCARIF**
+# 🚀 Thank You for Using DERCA!!
+**Your support and growing engagement inspire us to continually improve and enhance DERCA**
 - **Downloads since 1 Dec 2025:** <!--CLONES-->0<!--/CLONES-->
 - **Views: since 1 Dec 2025:** <!--VIEWS-->0<!--/VIEWS-->
 
