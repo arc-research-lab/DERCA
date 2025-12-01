@@ -14,8 +14,8 @@ Faculty Collaborators: Prof. Alex Jones (Syracuse University), Prof. Zheng Dong(
 
 # 🚀 Thank You for Using DERCA!!
 **Your support and growing engagement inspire us to continually improve and enhance DERCA**
-- **Downloads since 1 Dec 2025:** <!--CLONES-->0<!--/CLONES-->
-- **Views: since 1 Dec 2025:** <!--VIEWS-->0<!--/VIEWS-->
+- **Downloads since 1 Dec 2025:** <!--CLONES-->10<!--/CLONES-->
+- **Views: since 1 Dec 2025:** <!--VIEWS-->30<!--/VIEWS-->
 
 
 # Quick Start guide
