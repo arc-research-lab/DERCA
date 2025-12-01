@@ -41,4 +41,5 @@ For more detailed reproduce guide, please refer to the [artifact evaluation guid
 
 For more detailed explanation about the codes and workflow used in the software stack, please refer to the [DERCA software readme file](DERCA_SW/Readme.md)
 
-## 
+## DERCA Hardware stack (under construction)
+We demonstrate the architecture of DERCA via a series of examples for 
