@@ -14,8 +14,8 @@ Faculty Collaborators: Prof. Alex Jones (Syracuse University), Prof. Zheng Dong(
 
 # 🚀 Thank You for Using DERCA!!
 **Your support and growing engagement inspire us to continually improve and enhance DERCA**
-- **Downloads since 1 Dec 2025:** <!--CLONES-->556<!--/CLONES-->
-- **Views: since 1 Dec 2025:** <!--VIEWS-->253<!--/VIEWS-->
+- **Downloads since 1 Dec 2025:** <!--CLONES-->568<!--/CLONES-->
+- **Views: since 1 Dec 2025:** <!--VIEWS-->254<!--/VIEWS-->
 <p align="center">
   <picture>
     <img alt="DERCA" src="https://github.com/arc-research-lab/DERCA/blob/main/assets/DERCA_traffic_plot.png" width=90%>
